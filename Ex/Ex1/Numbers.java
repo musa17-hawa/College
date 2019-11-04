@@ -15,6 +15,7 @@ public class Numbers{
 		System.out.println("Please enter a 4 or 5 digit number to check if its a Palindrome number: ");
 		//getting the input and putting it into a variable called n --> (integer).
 		int n = usrInp.nextInt();
+		
 
 		//checking if the integer(n) is a 3 digit number.
 		if (n >= 100 && n <= 999){
