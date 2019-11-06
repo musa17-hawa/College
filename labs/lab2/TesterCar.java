@@ -9,6 +9,7 @@ public class TesterCar{
 		c1.capacity = 100;
 
 		c1.refuel(100);
+		
 		System.out.println(c1);
 		System.out.println(c1.canMakeIt(120));
 	}
