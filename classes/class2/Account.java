@@ -3,12 +3,19 @@ public class Account{
 	public double balance, overdraftLimit;
 	public boolean active;
 
+	public Account(){
+		num = (int)(Math.random()*1000);
+		balance = overdraftLimit = 0.0;
+		active = true;
+
+	}
+
 	public void printAccountNumber(){
 		System.out.println("Account Number is: "+num);
 		}
 
-	public void printDetails(){
-		System.out.println("Account Number : "+num+ " balance: "+balance+" overdraftLimit "+ overdraftLimit+" , " +active);
+	public String toString(){
+		return "Account Number : "+num+ ", balance: "+balance+", overdraftLimit "+ overdraftLimit+", " +"status : "+active ;
 
 	}
 
@@ -16,6 +23,14 @@ public class Account{
 		balance += amount;
 		System.out.println("current balance: "+balance);
 	}
+
+	public double howMuchToWithdraw(){
+
+		return balance - overdraftLimit;
+
+	}
+
+
 
 	
 }
