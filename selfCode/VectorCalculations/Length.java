@@ -3,8 +3,8 @@ import java.lang.Math;
 public class Length{
 	public static void main(String[] args) {
 
-		Vectors v = new Vectors(-1,1,-10);
-		Vectors u = new Vectors(2,3,7);
+		Vectors v = new Vectors(1,1,5);
+		Vectors u = new Vectors(-4,0,-2);
 
 		double newVx = u.getX() - v.getX();
 		double newVy = u.getY() - v.getY();
