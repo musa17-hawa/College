@@ -7,11 +7,16 @@ public class Tester{
 		Linear l1 = new Linear(2, 4);
 		System.out.println(l1);
 
+		Linear cl1 = new Linear(l1);
+		System.out.println("copy "+cl1);
+
+
 		System.out.println(f.getA());
 		System.out.println(f.getB());
+
+
 		System.out.println(f.assign(10));
 		System.out.println(f.solve(10));
-		
 		System.out.println(f.getIntersection(l1));
 
 		System.out.println(f.isOnLine(10,10));

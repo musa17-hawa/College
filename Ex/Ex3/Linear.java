@@ -14,17 +14,17 @@ public class Linear{
 
 	// making a copy constructor method
 	public Linear(Linear lin){
-		a = lin.a;
-		b = lin.b;
+		this.a = lin.a;
+		this.b = lin.b;
 
 	}
 	// a method that returns the value of a
 	public double getA(){
-		return a;
+		return this.a;
 	}
 	// a method that returns the value of b
 	public double getB(){
-		return b;
+		return this.b;
 	}
 
 	// this method takes a value of (x) and puts it into the equation,
@@ -100,8 +100,8 @@ public class Linear{
 		// b = the x coordinant when the equation hits the y axe,
 
 		// y = ax+b ==> b = y - a*x 
-		a = (y2-y1)/(x2-x1);
-		b = y1-(a*x1);
+		this.a = (y2-y1)/(x2-x1);
+		this.b = y1-(a*x1);
 
 		// creating the new Linear object with the parameters (a,b),
 		// which are calculated above
@@ -118,25 +118,26 @@ public class Linear{
 		// y = ax+b
 
 		// if a,b = 0 ==> y = 0
-		if(a == 0 && b == 0){
+		if(this.a == 0 && this.b == 0){
 			return "y = 0";
 		}
 
 		// if a = 0, b is not 0 ==> y = b
-		else if(a == 0 && b!=0){
-			return "y = "+b;
+		else if(this.a == 0 && this.b!=0){
+			return "y = "+this.b;
 		}
 
 		// if b = 0, a is not 0 ==> y = ax
-		else if(b == 0 && a != 0){
-			return "y = "+a+"x";
+		else if(this.b == 0 && this.a != 0){
+			return "y = "+this.a+"x";
 		}
 
-		// if b < 0 ==> y = ax-b
-		else if(b < 0){
-			return "y = "+a+"x"+b;
+		// if a != 0,  b < 0 ==> y = ax-b
+		else if(this.b < 0){
+			return "y = "+this.a+"x"+this.b;
 		}
-		return "y = "+a+"x"+"+"+b;
+		// if a != 0, b > 0 ==> y = ax + b
+		return "y = "+this.a+"x"+"+"+this.b;
 	}
 
 

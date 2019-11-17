@@ -6,6 +6,20 @@ public class Car{
 	public int capacity;
 	public final int KM_LITER = 15;
 
+
+	
+
+
+	public int getCarNum(){
+		return carNum;
+	}
+
+	public boolean getLicence(){
+		return licence;
+	}
+
+
+
 	public void printCarNum(){
 		System.out.println(carNum);
 

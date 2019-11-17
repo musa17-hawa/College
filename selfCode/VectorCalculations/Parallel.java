@@ -1,8 +1,8 @@
 public class Parallel{
 	public static void main(String[] args) {
 
-		Vectors v = new Vectors(-1,-1,-1);
-		Vectors u = new Vectors(2,2,2);
+		Vectors v = new Vectors(1,0,1);
+		Vectors u = new Vectors(2,2,4);
 
 
 		double xRatio = v.getX()/u.getX();
