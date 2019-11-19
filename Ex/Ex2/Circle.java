@@ -11,7 +11,7 @@ public class Circle{
 	// giving it any paremeters it would make an object that its (x,y) are (0,0)
 	// and its radius would be 1.0.
 	public Circle(){
-		radius = 1;
+		this.radius = 1;
 
 	}
 
@@ -19,13 +19,13 @@ public class Circle{
 	// and checks if the given radius is a negative number, if so, it sets the radius to 1.0.
 	// otherwise, it would set the radius to the given paremeter.
 	public Circle(double x, double y, double r){
-		centerX = x;
-		centerY = y;
+		this.centerX = x;
+		this.centerY = y;
 		if (r < 0){
-			 radius = 1;
+			 this.radius = 1;
 		}
 		else{
-			radius = r;
+			this.radius = r;
 		}
 	}
 
@@ -76,42 +76,24 @@ public class Circle{
 	//a method that resizes the Circle Object by multiplying the radius by a factor
 	public void resize(double factor){
 
-		// here we check if the factor is not a negtive number.
-		if (factor > 0){
-			// if its a positive number we do the math.
-			this.radius = radius*factor;
-		}
-		else{
-			// if the factor is indeed a negative number then we do not do the math,
-			// else we keep it as it is. 
-		}
+		this.radius = (factor > 0) ? this.radius*factor : this.radius;
 	}
 
 	// a method which changes the center of the Circle Object.
 	public void moveTo(double x, double y){
-		this.centerX = x;
-		this.centerY = y;
+		this.setCenterX(x);
+		this.setCenterY(y);
 	}
 
 	// a method that checks if a given(x,y) point is IN the borders of the Circle Object,
 	// or ON the borders of the Circle Object
 	public boolean isIn(double x, double y){
-		// calculating Delta X
-		double deltaX = Math.pow((this.centerX - x), 2);
-		// calculating Delta Y
-		double deltaY = Math.pow((this.centerY - y), 2);
-		// taking the square root of the sum of (deltaX, deltaY)
-		double prdistance = Math.sqrt(deltaX)+Math.sqrt(deltaY);
+
 		// checking if the distance between the point and the center of the Circle Object,
 		// is less than or equale to the radius(borders) of the Circle Object,
 		// if so the it is indeen inside or on the Circle Object.
-		if (prdistance <= this.radius){
-			return true;
-		}
 		// otherwise, it is not.
-		else{
-			return false;
-		}
+		return Math.sqrt(Math.pow((this.centerX - x), 2)+Math.pow((this.centerY - y), 2)) <= this.radius;
 	} // the end of the method.
 
 //______________________________________________
