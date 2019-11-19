@@ -20,9 +20,9 @@ public class Tester{
 		System.out.println(c1);
 
 		c2.moveTo(2, 1);
-		c2.resize(2);
+		c2.resize(-2);
 		System.out.println(c2);
-		c2.setRaduis(3);
+		c2.setRadius(3);
 		System.out.println(c2);
 
 		System.out.println("Is (5, 4.1) inside c1? " + c1.isIn(5, 4.1));

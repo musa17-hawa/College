@@ -48,11 +48,11 @@ public class Circle{
 //_______________________________________________
 
 	// making getters and setters for radius.
-	public double getRaduis(){
+	public double getRadius(){
 		return radius;
 	}
-	public void setRaduis(double newRaduis){
-		this.radius = newRaduis;
+	public void setRadius(double newRadius){
+		this.radius = (newRadius > 0) ? newRadius : this.radius;
 	}
 //______________________________________________
 
