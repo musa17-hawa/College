@@ -39,9 +39,13 @@ public class Tester{
 
 
         System.out.println(ap);
+        System.out.println(ap.getNumOfRooms());
         ap.setRoom(new Room("Living Room", 20));
+        System.out.println("After adding 1 more rooms:");
+        System.out.println(ap.getNumOfRooms());
         ap.setRoom(new Room("Bathroom", 5));
         System.out.println("After adding 2 more rooms:");
+        System.out.println(ap.getNumOfRooms());
         System.out.println(ap);
         System.out.println("Total area: " + ap.getTotalArea());
 	}
