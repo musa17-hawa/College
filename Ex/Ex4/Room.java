@@ -32,6 +32,6 @@ public class Room{ // a new Room class
 		this.area = (area < 0) ? 0 : area;
 	}
 	public String toString(){ // return the object as a string with all its details
-		return "Room type: "+this.type+", Area: "+this.area;
+		return "Room type: "+this.type+", Area: "+this.area+"\n";
 	}
 }

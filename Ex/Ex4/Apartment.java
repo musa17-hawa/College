@@ -98,39 +98,24 @@ public class Apartment{
 	// toString method returns the object as a string with all its details
 	// BUT if one or more of the rooms are empty(null)
 	// then we dont need to print its/their details
-	// so we have to check for couple of things 
+
 	public String toString(){
-		// first we check for how many rooms we have
-		if (this.numOfRooms == 1){
-			// if there is only 1 room then we need to know which room is it, and return it
-			if (this.firstRoom != null){ // if its the first one then return it as a string
+		// details String variable is the final answer
+		String details = this.family+"'s apartment, flat "+this.flat+" has "+this.numOfRooms+" rooms\n";
 
-				return this.family+"'s apartment, flat "+this.flat+" has "+this.numOfRooms+" rooms\nRoom type: "+this.firstRoom.getType()+", Area: "+this.firstRoom.getArea();
-			}
-			else if (this.secondRoom != null) { // if its the second one then return it as a string
-				return this.family+"'s apartment, flat "+this.flat+" has "+this.numOfRooms+" rooms\nRoom type: "+this.secondRoom.getType()+", Area: "+this.secondRoom.getArea();
-			}
-			else if (this.thirdRoom != null) { // if its the third one then return it as a string
-				return this.family+"'s apartment, flat "+this.flat+" has "+this.numOfRooms+" rooms\nRoom type: "+this.thirdRoom.getType()+", Area: "+this.thirdRoom.getArea();
-			}
+		if (this.firstRoom != null){ // if the first room isnt empty
+			// add its details to details(final answer)
+			// here we use the toString method of the Room class
+			details+=this.firstRoom.toString();
 		}
-		else if (this.numOfRooms == 2){
-			// if there are 2 rooms then we need to know which rooms are they
-			if (this.firstRoom != null && this.secondRoom != null) { // if first and second then return them as a string
-				return this.family+"'s apartment, flat "+this.flat+" has "+this.numOfRooms+" rooms\nRoom type: "+this.firstRoom.getType()+", Area: "+this.firstRoom.getArea()+"\nRoom type: "+this.secondRoom.getType()+", Area: "+this.secondRoom.getArea();
-			}
-			else if (this.firstRoom != null && this.thirdRoom != null) { // if first and third then return them as a string
-				return this.family+"'s apartment, flat "+this.flat+" has "+this.numOfRooms+" rooms\nRoom type: "+this.firstRoom.getType()+", Area: "+this.firstRoom.getArea()+"\nRoom type: "+this.thirdRoom.getType()+", Area: "+this.thirdRoom.getArea();
-			}
-			else if (this.secondRoom  != null && this.thirdRoom != null){ // if second and third then return them as a string
-				return this.family+"'s apartment, flat "+this.flat+" has "+this.numOfRooms+" rooms\nRoom type: "+this.secondRoom.getType()+", Area: "+this.secondRoom.getArea()+"\nRoom type: "+this.thirdRoom.getType()+", Area: "+this.thirdRoom.getArea();
-			}
-
+		// doing the same thing for the rest of the rooms
+		if(this.secondRoom != null){
+			details+=this.secondRoom.toString();
 		}
-		else if (this.numOfRooms == 3){ // if there are 3 rooms then just return all of them as a string
-			return this.family+"'s apartment, flat "+this.flat+" has "+this.numOfRooms+" rooms\nRoom type: "+this.firstRoom.getType()+", Area: "+this.firstRoom.getArea()+"\nRoom type: "+this.secondRoom.getType()+", Area: "+this.secondRoom.getArea()+"\nRoom type: "+this.thirdRoom.getType()+", Area: "+this.thirdRoom.getArea();
+		if(this.thirdRoom != null){
+			details+=this.thirdRoom.toString();
 		}
-		return this.family+"'s apartment, flat "+this.flat+" has 0 rooms"; // if there isnt any room (meaning they are all null)
-																		   // then return the details of the apartment with 0 rooms
+		// returning the details of the apartment
+		return details;
 	}
 }
