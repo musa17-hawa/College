@@ -64,15 +64,13 @@ public class Apartment{
 	// and then puts it into the variable 
 	public double getTotalArea(){
 		// initiating rooms area variables
-		double firstRoomArea;
-		double secondRoomArea;
-		double thirdRoomArea;
+		double roomArea = 0;
 		// doing the checking (empty or not) and putting the values
-		firstRoomArea = (this.firstRoom == null) ? 0 : this.firstRoom.getArea();
-		secondRoomArea = (this.secondRoom == null) ? 0 : this.secondRoom.getArea();
-		thirdRoomArea = (this.thirdRoom == null) ? 0 : this.thirdRoom.getArea();
+		roomArea+= (this.firstRoom != null) ? this.firstRoom.getArea() : 0;
+		roomArea+= (this.secondRoom != null) ? this.secondRoom.getArea() : 0;
+		roomArea+= (this.thirdRoom != null) ? this.thirdRoom.getArea() : 0;
 		// returning the Sum of all areas
-		return firstRoomArea + secondRoomArea + thirdRoomArea;
+		return roomArea;
 	}
 	// the getRoomByType method takes a String "type" as a parameter
 	// and then looks for this "type" of room in the needed Apartment object
@@ -102,20 +100,11 @@ public class Apartment{
 	public String toString(){
 		// details String variable is the final answer
 		String details = this.family+"'s apartment, flat "+this.flat+" has "+this.numOfRooms+" rooms\n";
+		
+		details+= (this.firstRoom != null) ? this.firstRoom.toString() : "";
+		details+= (this.secondRoom != null) ? this.secondRoom.toString() : "";
+		details+= (this.thirdRoom != null) ? this.thirdRoom.toString() : "";
 
-		if (this.firstRoom != null){ // if the first room isnt empty
-			// add its details to details(final answer)
-			// here we use the toString method of the Room class
-			details+=this.firstRoom.toString();
-		}
-		// doing the same thing for the rest of the rooms
-		if(this.secondRoom != null){
-			details+=this.secondRoom.toString();
-		}
-		if(this.thirdRoom != null){
-			details+=this.thirdRoom.toString();
-		}
-		// returning the details of the apartment
 		return details;
 	}
 }
