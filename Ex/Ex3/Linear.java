@@ -3,7 +3,7 @@ public class Linear{
 	// the linear equation is gonna have two characteristics which are,
 	// a : which is the coefficient of x which aslo means the slope
 	// b : which is the x coordinate of the equation when it hits the y axe
-	double a, b;
+	private double a, b;
 
 	// making a constructor method that takes a and b as parameters
 	public Linear(double a, double b){
@@ -69,11 +69,9 @@ public class Linear{
 		// y = ax+b 
 		// if 'y'(the input) = a*'x'(the input) + b ==> true
 		// else ==> false
-		if(this.a*x+this.b == y){
-			return true;
-		}
-		return false;
+		return (this.a*x+this.b == y);
 	}
+
 
 	// this method takes another Linear object(linear equation) as an input,
 	// and checks whether if the orginal equation(Linear object) is actually parallel to the,
@@ -86,29 +84,25 @@ public class Linear{
 		// other.a = a of the other object
 
 		// if a1 == a2 then they are parallel(they both have the same slope) ==> true
-		if(this.a == other.a){
-			return true;
-		}
-		return false;
+		return (this.a == other.a);
 	}
+
 
 	// this method takes two points(x1,y1),(x2,y2) as inputs and simply
 	// creats an equation(Linear object) for this line(the two points connected through a line),
 	// and returns it(the new Linear object - linear equation)
 	public Linear createLinear(double x1, double y1, double x2, double y2){
-		// a = the slope ==> delta y / delta x
-		// b = the x coordinant when the equation hits the y axe,
+		// s = the slope ==> delta y / delta x
+		// i = the x coordinant when the equation hits the y axe,
 
-		// y = ax+b ==> b = y - a*x 
-		this.a = (y2-y1)/(x2-x1);
-		this.b = y1-(a*x1);
+		// y = sx+i ==> i = y - s*x 
+		double s = (y2-y1)/(x2-x1);
+		double i = y1-(s*x1);
 
 		// creating the new Linear object with the parameters (a,b),
 		// which are calculated above
-		Linear obj = new Linear(a,b);
-
 		// returning the new Linear object
-		return obj;
+		return new Linear(s,i);
 
 	}
 	

@@ -18,7 +18,8 @@ public class Tester{
 
         ap.setRoom(r1); //ap has the room r1 which is a kitchen
         r2 = ap.getRoomByType("Kitchen"); // r2 is Room "kitchen"
-         if(r2 == null){
+
+        if(r2 == null){
             System.out.println("No Kitchen yet");
         }
         else{
@@ -28,7 +29,8 @@ public class Tester{
 
         System.out.println("Checking aliasing:");
         r1.setType("Living Room"); // r1 is Room "living room"
-        r2 = ap.getRoomByType("Living Room"); // 
+        r2 = ap.getRoomByType("Living Room"); // r2 = ap.firstRoom.getType() = Kitchen
+        r3 = 
 
          if(r2 == null){
             System.out.println("Great - no aliasing here");
@@ -39,13 +41,9 @@ public class Tester{
 
 
         System.out.println(ap);
-        System.out.println(ap.getNumOfRooms());
         ap.setRoom(new Room("Living Room", 20));
-        System.out.println("After adding 1 more rooms:");
-        System.out.println(ap.getNumOfRooms());
         ap.setRoom(new Room("Bathroom", 5));
         System.out.println("After adding 2 more rooms:");
-        System.out.println(ap.getNumOfRooms());
         System.out.println(ap);
         System.out.println("Total area: " + ap.getTotalArea());
 	}

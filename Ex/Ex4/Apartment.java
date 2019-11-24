@@ -83,13 +83,13 @@ public class Apartment{
 	// then return null
 	public Room getRoomByType(String type){
 		if (this.firstRoom != null && this.firstRoom.getType() == type){
-			return this.firstRoom;
+			return new Room(this.firstRoom);
 		}
 		else if (this.secondRoom != null && this.secondRoom.getType() == type) {
-			return this.secondRoom;
+			return new Room (this.secondRoom);
 		}
 		else if (this.thirdRoom != null && this.thirdRoom.getType() == type) {
-			return this.thirdRoom;
+			return new Room (this.thirdRoom);
 		}
 		return null;
 	}
