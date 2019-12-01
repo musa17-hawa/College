@@ -4,7 +4,8 @@ public class Tester{
         System.out.println(r1);
 
         Apartment ap = new Apartment("Cohen", 1);
-        System.out.println(ap);
+
+        System.out.println(ap +" total area " + ap.getTotalArea());
 
 
         Room r2 = ap.getRoomByType("Kitchen");
@@ -30,7 +31,6 @@ public class Tester{
         System.out.println("Checking aliasing:");
         r1.setType("Living Room"); // r1 is Room "living room"
         r2 = ap.getRoomByType("Living Room"); // r2 = ap.firstRoom.getType() = Kitchen
-        r3 = 
 
          if(r2 == null){
             System.out.println("Great - no aliasing here");
