@@ -96,6 +96,66 @@ public class Array{
 	}
 
 	public int longestPrefixAndSuffix(){
+		/* 
+		input ==> array out ==> int out
+
+		{1,1,1} ==> {1,1} ==> 2
+		{1,2,1} ==> {1} ==> 1
+		{1,2,1,2} ==> {1,2} ==> 2
+		{1} ==> {} ==> 0
+___________________________________________________________________
+
+________________________technical examples_________________________
+
+___________________________________________________________________
+
+		we wanna check where the first elemnt shows in the array:
+
+		{1,2,1,2}==>{1,2,1,2}			#1
+		 ^			     ^		
+		 							incrementing by 1
+
+		{1,2,1,2}==>{1,2,1,2}     		#2
+		   ^		       ^
+				||
+				\/
+
+	      output:  2
+
+
+		{1,2,3,1}==>{1,2,3,1}			#1  the <<last>> elemnt is also 1
+		 ^			       ^		
+										not need to incrementing by 1
+
+		{1,2,3,1}==>{1,2,3,1}     		#2  not needed
+		   ^		         ^
+				||
+				\/
+
+		  output:  1
+		*/
+
+//		{1,2,1,2} ==> 2
+//		{1,2,3,4} ==> 0
+
+		// int i = 0;
+		// int j = 1;
+		// int counter = 1;
+		// while(i < this.numbers.length && j < this.numbers.length){
+		// 	if(this.numbers[i] != this.numbers[j]){
+		// 		j++;
+		// 		counter++;
+		// 	}
+
+		// 	else if(i == counter){
+		// 		i = 0;
+		// 		j++;
+		// 	}
+		// 	else{
+		// 		i++;
+		// 		j++;
+		// 	}
+		// }
 		return 0; // placeholder
 	}
 
@@ -109,7 +169,7 @@ public class Array{
 
 	public String toString(){ // working fine
 		if(this.numbers == null){
-			return "there is no such object";
+			return "Array has not been created";
 		}
 
 		String result = "{";
