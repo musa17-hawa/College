@@ -1,5 +1,6 @@
 public class Loops{
 	public static void main(String[] args) {
+			specialMult(111);
 			printAllSpecialMult(37);
 			System.out.println("\n");
 			printWithComma(12345678, 1);

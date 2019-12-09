@@ -34,9 +34,7 @@ public class MyArray{
 
 	public boolean hasSubArray(int[] other){
 	// 	for(int i = 0; i <=(this.numbers.length - other.length); i++){
-	// 		System.out.println(i);
 	// 		for(int k = 0; k < other.length && this.numbers[i + k] == other[k]; k++){
-	// 			System.out.println(k);
 	// 			if(k+1 >= other.length){
 	// 				return true;
 	// 			}
