@@ -1,9 +1,9 @@
 public class Loops{
 	public static void main(String[] args) {
-			specialMult(111);
+			specialMult(1);
 			printAllSpecialMult(37);
 			System.out.println("\n");
-			printWithComma(12345678, 1);
+			printWithComma(12345678,4);
 	}
 /*_________________________________________________________
 
@@ -81,6 +81,31 @@ ___________________________________________________________*/
 ___________________________________________________________*/
 
 	public static void printWithComma(int n, int d){
+		int orgn = n;
+		String result = "";
+		int numofdigits = howManyDigits(n);
+
+		if(n <= 0 || d <= 0 || numofdigits == 1 || numofdigits <= d){
+			System.out.println(n);
+		}
+		else{
+			for(int i = numofdigits, k = 1; i > 0; i--,k++){
+				
+				// moving the number to the result one digit by one digit
+				n/=Math.pow(10,i-1);
+				result += n%10;
+				n = orgn;
+				// checking if we are in the right place to add a comma
+				result += (((numofdigits-k)%d == 0) && k != numofdigits) ? "," : ""; // if not we add ""
+				// 																	which is basically nothing 
+
+			}
+		}
+		System.out.println(result);
+	}
+
+
+	public static void printWithCommaUsingStrings(int n, int d){
 		String result = "";
 		String stringn = ""+n;
 		int howmanydigits = howManyDigits(n);
@@ -92,8 +117,8 @@ ___________________________________________________________*/
 		}
 		// if that wasnt the case then we want to add a comma only if we are not at the end of the number
 		// i != howmanydigits, and at a specific place coresponding to d
-		// exp: printWithComma(12345678, 3), we want to add a comma whevever we are in the 2 number
-		// which is 2 or 5th number which is 5
+		// exp: printWithComma(12345678, 3), we want to add a comma whenever we are in the 2nd digit
+		// which is 2 or 5th digit which is 5
 		// we dont want to add a comma in the 8th number because i(8) = howmanydigits(8)
 		// so to get the 2,5 we need to do some math,
 		// the math that we are doing here is (howmanydigits - i)%d == 0 and we are not at the end of the number
@@ -103,7 +128,6 @@ ___________________________________________________________*/
 		// lets take the 3rd number for example   	(8 - 3)%3 = 5%3 != 0 then we dont add a comma
 		else{
 			for(int i = 1; i < howmanydigits+1; i++){
-				
 				// moving the number to the result one digit by one digit
 				result += stringn.charAt(i-1); 
 				// checking if we are in the right place to add a comma
