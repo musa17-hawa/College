@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Array{
 	private int[] numbers;
 
@@ -135,37 +137,72 @@ ___________________________________________________________________
 		  output:  1
 		*/
 
-//		{1,2,1,2} ==> 2
+//		{1,2,1,2} ==> 2  [0] with [(length-1) - i] // i = 1
 //		{1,2,3,4} ==> 0
+//		{1,2,1,2,3,1,2} ==> 2
+//		{2,2,1,2,1,2,2,1} ==> 4
+//		{1,1,1} ==> length - 1
 
-		// int i = 0;
-		// int j = 1;
-		// int counter = 1;
-		// while(i < this.numbers.length && j < this.numbers.length){
-		// 	if(this.numbers[i] != this.numbers[j]){
-		// 		j++;
-		// 		counter++;
-		// 	}
-
-		// 	else if(i == counter){
-		// 		i = 0;
-		// 		j++;
-		// 	}
-		// 	else{
-		// 		i++;
-		// 		j++;
-		// 	}
-		// }
-		return 0; // placeholder
+		int i = 0;
+		int j = 1;
+		while(j < this.numbers.length && i < this.numbers.length){
+			if(this.numbers[i] != this.numbers[j]){
+				i = 0;
+				j++;
+			}
+			else{
+				i++;
+				j++;
+			}
+		}
+		return i;
 	}
 
 	public Array uniteWith(Array other){
-		return new Array(this.numbers); // placeholder
+		int resultlength = this.numbers.length + other.numbers.length;
+		int[] result = new int[resultlength];
+
+		for(int i = 0; i < this.numbers.length; i++){
+			result[i] = this.numbers[i];
+		}
+		for(int i = 0; i < other.numbers.length; i++){
+			result[i+this.numbers.length] = other.numbers[i];
+		}
+
+		return new Array(result); // placeholder
 	}
 
-	public void removeSub(Array other){
 
+
+
+
+
+
+	public void removeSub(Array other){ //{1,1,2,3}{1,2} ==> {1,3}
+										//{1,1,2,1}{1,3} ==> cant
+		int i = 0;
+		int j = 0;
+		int k = 0;
+		if(other.numbers.length > this.numbers.length){
+			System.out.println("you cant remove " + other.toString() + " form " + this.toString());
+			return;
+		}
+		int[] result = new int[this.numbers.length - other.numbers.length];
+
+		while(j < other.numbers.length){
+			return;
+		}
+
+		if(j != other.numbers.length){
+			System.out.println("couldnt find " + other.toString() + " in "+ this.toString());
+		}
+		System.out.println(Arrays.toString(result));
 	}
+
+
+
+
+
 
 	public String toString(){ // working fine
 		if(this.numbers == null){
@@ -181,4 +218,4 @@ ___________________________________________________________________
 		return result;
 	}
 
-}
+} 
