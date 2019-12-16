@@ -3,7 +3,7 @@ public class Loops{
 			specialMult(1);
 			printAllSpecialMult(37);
 			System.out.println("\n");
-			printWithComma(12345678,4);
+			printWithComma(12345678,3);
 	}
 /*_________________________________________________________
 
@@ -82,7 +82,6 @@ ___________________________________________________________*/
 
 	public static void printWithComma(int n, int d){
 		int orgn = n;
-		String result = "";
 		int numofdigits = howManyDigits(n);
 
 		if(n <= 0 || d <= 0 || numofdigits == 1 || numofdigits <= d){
@@ -93,15 +92,14 @@ ___________________________________________________________*/
 				
 				// moving the number to the result one digit by one digit
 				n/=Math.pow(10,i-1);
-				result += n%10;
+				System.out.print(n%10);
 				n = orgn;
 				// checking if we are in the right place to add a comma
-				result += (((numofdigits-k)%d == 0) && k != numofdigits) ? "," : ""; // if not we add ""
-				// 																	which is basically nothing 
-
+				System.out.print((((numofdigits-k)%d == 0) && k != numofdigits) ? "," : ""); // if not we add ""
+				// 			  																which is basically nothing 
 			}
 		}
-		System.out.println(result);
+		System.out.println("");		
 	}
 
 /*_________________________________________________________

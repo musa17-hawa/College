@@ -3,7 +3,7 @@ public class Tester{
 		MyArray array = new MyArray(5);
 
 		int[] a = {1,2,3,1,2,4};
-		int[] b = {1,2,4};
+		int[] b = {2,4};
 
 		MyArray arraya = new MyArray(a);
 		MyArray arrayb = new MyArray(b);

@@ -14,6 +14,7 @@ public class Array{
 			}
 		}
 	}
+		
 //_________________________________________________
 
 	public boolean isPrefix(Array other){
@@ -180,28 +181,51 @@ ___________________________________________________________________
 
 	public void removeSub(Array other){ //{1,1,2,3}{1,2} ==> {1,3}
 										//{1,1,2,1}{1,3} ==> cant
-		int i = 0;
-		int j = 0;
-		int k = 0;
 		if(other.numbers.length > this.numbers.length){
-			System.out.println("you cant remove " + other.toString() + " form " + this.toString());
+			System.out.println(" you cant remove " + other.toString() + " form " + this.toString());
 			return;
 		}
-		int[] result = new int[this.numbers.length - other.numbers.length];
+		while(this.whereIsSub(other) != -1){
 
-		while(j < other.numbers.length){
-			return;
+			int[] result = new int[this.numbers.length-other.numbers.length];
+			for(int j = 0, m = 0; j < result.length; j++){
+				if(j == this.whereIsSub(other)){
+					result[j] = this.numbers[j+other.numbers.length];
+					m+= other.numbers.length;
+				}
+				else{
+					result[j] = this.numbers[j+m];
+				}
+				
+			}
+			this.numbers = new int[result.length];
+			for(int i = 0; i < this.numbers.length; i++)
+				this.numbers[i] = result[i];
 		}
-
-		if(j != other.numbers.length){
-			System.out.println("couldnt find " + other.toString() + " in "+ this.toString());
-		}
-		System.out.println(Arrays.toString(result));
+		System.out.println(this.toString());
 	}
 
 
-
-
+public int whereIsSub(Array other){
+		int i = 0;
+		int k = 0;
+		while(i < this.numbers.length && k < other.numbers.length){
+			if(this.numbers[i] == other.numbers[k]){
+				if(k == other.numbers.length-1){
+					return i-k;
+				}
+				else{
+					i++;
+					k++;
+				}
+			}
+			else{
+				i++;
+				k = 0;
+			}
+		}
+		return -1;
+	}
 
 
 	public String toString(){ // working fine
