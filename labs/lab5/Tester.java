@@ -14,6 +14,7 @@ public class Tester{
 		System.out.println(arraya);
 		System.out.println(arrayb);
 		System.out.println(arraya.hasSubArray(b));
+		
 
 	}
 }
