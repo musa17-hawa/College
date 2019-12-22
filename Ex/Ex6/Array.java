@@ -115,12 +115,14 @@ public class Array{
 
 	public int longestPrefixAndSuffix(){
 
-		int i = 0;// starting at the first index
-		int j = 1;// starting at the second index
+		int i = 0;// starting at the first element
+		int j = 1;// starting at the second element
 		while(j < this.numbers.length && i < this.numbers.length){ // to avoid index out of bound
 			if(this.numbers[i] != this.numbers[j]){ // if they are not equal, then we add 1 to j and reset i
 				i = 0;
-				j++;
+				if(this.numbers[i] != this.numbers[j]){
+					j++;
+				}
 			}
 			else{// if they are equal then we add 1 to both j and i and check again
 				i++;
@@ -151,7 +153,10 @@ public class Array{
 
 
 
-
+//	input(this. = {1,1,2,2} and other. = {1,2})
+//	ouput({}) empty array
+	// when removing other. from this. you get{1,2}
+	// when done again you get {1,2}
 	public void removeSub(Array other){ // removing sub array from this array
 		if(other.numbers.length > this.numbers.length){ // if the sub(other.) is bigger in length than this.
 			// then we cant make the remove
@@ -185,25 +190,29 @@ public class Array{
 
 
 	public int whereIsSub(Array other){// method that returns the index of the first sub found in this.numbers
-			int i = 0;
-			int k = 0;
-			while(i < this.numbers.length && k < other.numbers.length){
+		int i = 0;
+		int k = 0;
+		while(i < this.numbers.length && k < other.numbers.length){
+			if(this.numbers[i] == other.numbers[k]){
+				if(k == other.numbers.length-1){
+					return i-k;
+				}
+				k++;
+				i++;
+			}
+			else{
+				k = 0;
 				if(this.numbers[i] == other.numbers[k]){
-					if(k == other.numbers.length-1){
-						return i-k;
-					}
-					else{
-						i++;
-						k++;
-					}
+					continue;
 				}
 				else{
 					i++;
-					k = 0;
 				}
+
 			}
-			return -1;
 		}
+		return -1;
+	}
 
 
 	public String toString(){ // Printing the details of the Array object
