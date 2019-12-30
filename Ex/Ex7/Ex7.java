@@ -29,37 +29,65 @@ a[index/length][index%length]
 */
 
 
-	public static boolean find(int[][] a, int x){ // O(log(n))
-		int start = 0;
-		int end = (a.length*a.length)-1;
+	public static boolean find(int[][] a, int x){
 
-		while(start <= end){
-			int mid = (end +  start)/2;
-			if(a[mid/a.length][mid%a.length] > x){
-				end = mid - 1;
-			}
-			else if(a[mid/a.length][mid%a.length] < x){
-				start = mid + 1;
-			}
-			else if(a[mid/a.length][mid%a.length] == x){
-				return true;
-			}
-		}
 
-		return false;
+	// O(log(n))
+
+		// int start = 0;
+		// int end = (a.length*a.length)-1;
+
+		// while(start <= end){
+		// 	int mid = (end + start)/2;
+		// 	if(a[mid/a.length][mid%a.length] > x){
+		// 		end = mid - 1;
+		// 	}
+		// 	else if(a[mid/a.length][mid%a.length] < x){
+		// 		start = mid + 1;
+		// 	}
+		// 	else if(a[mid/a.length][mid%a.length] == x){
+		// 		return true;
+		// 	}
+		// }
+
+		// return false;
 
 	}
 // if a.length is even the mid is odd and vice versa
 	public static int find1(int[] a, int x){
-		int start = 0;
-		int end = a.length-1;
+		if(x < a[0] || x > a[1]) return false;
+		if(x > a[0] && x < ((a.length-1)%2 == 0)? a[a.length-2] : a[a.length-1]){
+			int start = 0;
+			int end = (a.length-1)%2 == 0)? a[a.length-2] : a[a.length-1];
+
+			while(start <= end){
+				int mid = (end +  start)/2;
+				if(mid%2 != 0) mid-=1;
+				if(a[mid] > x){
+					end = mid - 1;
+				}
+				else if(a[mid] < x){
+					start = mid + 1;
+				}
+				else if(a[mid] == x){
+					return true;
+				}
+			}
+		}
+
+		if(x < a[1] && x > (a.length-1%2 != 0)? a[a.length-1] : a[a.length-2]){
+
+		}
+
+		// int start = 0;
+		// int end = a.length-1;
 
 
-		while(start <= end){
-			int mid = (end +  start)/2;
-			System.out.println(mid+"\t"+a[mid]);
-			
-		return -1;
+		// while(start <= end){
+		// 	int mid = (end +  start)/2;
+		// 	System.out.println(mid+"\t"+a[mid]);
+		// }
+		// return -1;
 	}
 
 	public static int countSub(String s, char first, char last){
