@@ -1,27 +1,21 @@
 public class Ex7{
 
 	public static void main(String[] args) {
-		int[][] temp = {{-4,-1,1,2},{4,5,7,8},{11,12,15,17},{20,30,35,54}};
-		int[][] test = {{1,2,3},{4,5,6},{7,8,9}};
-		int[] temp1 = {-3,10,0,9,2,5,3,0,6,-5};//9,5,10
+		int[][] temp = {{1,3,8,12},{2,5,9,13},{3,9,10,14},{4,10,11,15}};
+		int[] temp1 = {-3,10,0,9,2,5,3,0,6,-5};
 
+		/*
 
-		int[][] big = new int[100][100];
-		int l = 1;
-		for(int i = 0; i < 100; i++){
-			for(int j = 0; j < 100; j++){
-				big[i][j] = l;
-				l++;
-			}
-		}
+		1	3	8	(12)
+		2	5	9	13
+		3	9	10	14
+		4	10	11	15
 
-		System.out.println(find(big, 10000));
-		for(int j = 0; j < 11; j++){
-			System.out.println(""+j +" "+ find1(temp1,j));
+		*/
 
-		}
-		System.out.println(countSub("abaaabaabb", 'a', 'b'));
-
+		System.out.println(find(temp,15));
+		System.out.println(find(temp1,-5));
+		System.out.println(countSub("abaaabaabb", 'a', 'a'));
 
 	}
 
@@ -29,26 +23,43 @@ public class Ex7{
 /*
 
 **veeeryyy impoooortannnttt**
-index = 8
+a = 3*3
+index = 7
 a[index/length][index%length]
+a[row][col]
+a[7/3][7%3]
+a[2][2]
 
 */
 
 
-	public static boolean find(int[][] a, int x){ // O(n^2) ==> nlog(n)
+	public static boolean find(int[][] a, int x){ // O(n^2) ==> O(n)
+		int row = 0;
+		int col = a.length-1;
+		while(row < a.length && col >= 0){
+			if(x < a[row][col]){
+				col--;
+			}
+			else if(x > a[row][col]){
+				row++;
+			}
+			else if(x == a[row][col]){
+				return true;
+			}
+		}
 		return false;
-
 	}
-
-	public static int find1(int[] a, int x){ // O(2log(n))
+	public static int find(int[] a, int x){ // O(log(n))
 		int lastOddInd = ((a.length-1)%2 == 0) ? a.length-2 : a.length-1;
 		int lastEvenInd = ((a.length-1)%2 == 0) ? a.length-1 : a.length-2;
-		if((x < a[0] && x < lastOddInd) || (x > a[1] && x > lastEvenInd)) return -1;
+		if((x < a[0] && x < a[lastOddInd]) || (x > a[1] && x > a[lastEvenInd])) return -1;
 
 		int start = 0;
 		int end = lastEvenInd;
 		while(start < end){
+
 			int mid = (end +  start)/2;
+
 			mid += mid%2;
 			if(a[mid] > x){
 				end = mid - 1;
@@ -60,6 +71,7 @@ a[index/length][index%length]
 				return mid;
 			}
 		}
+
 
 		start = 1;
 		end = lastOddInd;
@@ -79,13 +91,21 @@ a[index/length][index%length]
 		}
 		return -1;
 	}
-
 	public static int countSub(String s, char first, char last){// O(n)
-		int indexOfFirst = s.indexOf(first);
-		for(int i = (s.length() - 1); i > indexOfFirst; i--){
-			if (s.charAt(i) == last) return (i - indexOfFirst)+1;
+		int sum = 0;
+		int sumOfA = 0;
+		for(int i = 0; i < s.length(); i++){
+			if(s.charAt(i) == last){
+				sum += sumOfA;
+			}
+			
+			if(s.charAt(i) == first){
+				sumOfA++;
+			}
+			else{
+				continue;
+			}
 		}
-		return -1;
-
+		return sum;
 	}
 }
