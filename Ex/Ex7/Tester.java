@@ -5,6 +5,10 @@ public class Tester{
 		int[] a = {1,2,3,4,5,6,7,8,9,10};
 		int x = 0;
 		System.out.println(isThere(a,x));
+
+		String str = "cdeabaab";
+		System.out.println(str.indexOf('a'));
+		
 	}
 
 
