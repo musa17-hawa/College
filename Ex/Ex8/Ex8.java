@@ -1,28 +1,11 @@
 import java.util.Arrays;
 public class Ex8{
-	public static void main(String[] args) {
-
-		int[] x = {-1,2,0,3};
-		int[] b = {32,21,32,33};
-		int[] test = {4,2,7,10,5,0,9,15,14,12};
-		// int[] temp1 = {-1,0,5,7,9,11,12,200,201};
-		// int[] temp2 = {1,3,16,18,100,101,300};
-		String s1 = "hello$world2n!";
-		String s2 = "HelLo$WoRLd2N!";
-
-		// binary operator
-		char bigh = 'h'&~32;// A ==> a __ A|32 = a
-		char smallh = 'H'|32;// a ==> A __ a&~32 = A
-
-		System.out.println(howManyEven(2220));
-		System.out.println(longestAscending(test));
-		System.out.println(Arrays.toString(temp1)+" + "+Arrays.toString(temp2)+" ==> "+Arrays.toString(merge(temp1,temp2)));
-		System.out.println(equalIgnoreCase(s1,s2));
-	}
 //_________________________________________
 //_________________________________________
 
 	public static int howManyEven(int num){// working fine
+		//checking for the next step along with the even digit, just because if its 0,
+		//i included 0 even though it was not requird
 		int digit = num%10 ;
 		if (digit%2==0 && num/10 != 0 ) return 1+howManyEven(num/10) ; 
 		else if (digit%2==0 && num/10==0 )	return 1 ; 
@@ -31,17 +14,17 @@ public class Ex8{
 		return 0;	
 	}
 
-	public static int longestAscending(int[] a){// working fine, need to check for {0,0,0,0}, and {5,4,3,2,1} if its ok to return 1
+	public int longestAscending(int[] a){// working fine, need to check for {0,0,0,0}, and {5,4,3,2,1} if its ok to return 1
 		return lengthOfLongest(a,0,1);
 	}
 
 
-	public static int[] merge(int[] a, int[] b){
+	public int[] merge(int[] a, int[] b){
 		int[] result = new int[a.length + b.length];
 		return mergeWithIndex(a, b,result,0,0,0);
 	}
 
-	public static boolean equalIgnoreCase(String s1, String s2){// working fine
+	public boolean equalIgnoreCase(String s1, String s2){// working fine
 		if(s1.length() == 0 && s2.length() == 0) return true;
 		if(s1.length() != s2.length()) return false;
 		if((s1.charAt(0) == s2.charAt(0)) || ((s1.charAt(0)|32) == (s2.charAt(0)|32))) return equalIgnoreCase(s1.substring(1,s1.length()),s2.substring(1,s2.length()));
@@ -66,17 +49,17 @@ public class Ex8{
 //+++++++++++++++++++++++++++++++++++++++++++++++++++
 //+++++++++++++++++++++++++++++++++++++++++++++++++++
 	public static int[] mergeWithIndex(int[] a, int[] b,int[] result, int i, int j, int k){// i is always 0, j is always 0
-	 	int[] temp = {Integer.MAX_VALUE};
+	 	int[] temp = {Integer.MAX_VALUE};// largest integer value in java in an array
 		//{-1,0,5,7,9,11,12}
 		//{1,3,16,18,100,101}
-		if(k < result.length){
-			if(i == a.length){
+		if(k < result.length){//stoping condition
+			if(i == a.length){// it means we are done with array a
 				result[k] = b[j];
-				return mergeWithIndex(temp,b,result,0,j+1,k+1);
+				return mergeWithIndex(temp,b,result,0,j+1,k+1);// we return the temp[0] array and continue with b[+1]
 			}
-			else if(j == b.length){
+			else if(j == b.length){// we are done with b
 				result[k] = a[i];
-				return mergeWithIndex(a,temp,result,i+1,0,k+1);
+				return mergeWithIndex(a,temp,result,i+1,0,k+1);// returning a[+1] and temp[0]
 			}
 			else{
 				if(a[i] < b[j]){
