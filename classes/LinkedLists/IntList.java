@@ -110,6 +110,7 @@ public class IntList{
 		if (head == null) return;
 		int minElem = head.getValue();
 		int temp = head.getValue();
+		
 		Node p;
 		Node i;
 		for(p = head; p != null; p = p.getNext()){
