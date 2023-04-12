@@ -5,40 +5,43 @@ public class ChessBoard{
 		this.pieces = new ChessPiece[10];
 	}
 
-	// this method will add p to ChessPiece List, if it is already full, it wont do anything
-	public void addPiece(ChessPiece p){
-		int i = 0;
-		while(i < this.pieces.length){
-			if (this.pieces[i] == null){
+    // Add p to ChessPiece List, if it is already full, it won't do anything
+	public void addPiece(ChessPiece p) {
+		for (int i = 0; i < this.pieces.length; i++) {
+			if (this.pieces[i] == null) {
+				this.pieces[i] = p;
+				break;
+			} else if (this.pieces[i].equals(p)) {
 				break;
 			}
-			i++;
 		}
-		this.pieces[i] = p;
-		
 	}
 
-	public boolean threats(int p1, int p2){
-		if(p1 >= this.pieces.length || p2 >= this.pieces.length){
+	
+
+    // Return true if piece at index p1 threatens piece at index p2, false otherwise
+	public boolean threats(int p1, int p2) {
+		if (p1 >= this.pieces.length || p2 >= this.pieces.length) {
 			return false;
 		}
 
 		ChessPiece pieceOne = this.pieces[p1];
 		ChessPiece pieceTwo = this.pieces[p2];
-		if (pieceOne == null || pieceTwo == null){
+		if (pieceOne == null || pieceTwo == null) {
 			return false;
 		}
 		int row = pieceTwo.getPosition().getRow();
 		int col = pieceTwo.getPosition().getCol();
 		Position[] possibleMoves = pieceOne.moves(pieceOne.getPosition());
-		for(Position possibleMove : possibleMoves){
-			if (possibleMove.getRow() == row && possibleMove.getCol() == col){
+		for (Position possibleMove : possibleMoves) {
+			if (possibleMove.getRow() == row && possibleMove.getCol() == col) {
 				return true;
 			}
 		}
 		return false;
 	}
 
+	// The method whoThreatsWho iterates through the ChessPiece array and calls the threats method for each pair of ChessPieces, returning a string that describes which ChessPiece is threatening which.
 	public String whoThreatsWho(){
 		String result = "";
 		for(int i = 0; i < this.pieces.length; i++){

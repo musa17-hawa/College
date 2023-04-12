@@ -1,28 +1,36 @@
 public class Knight implements ChessPiece{
 	private int row, col;
-	public Knight(Position p){
-		this.row = p.getRow();
-		this.col = p.getCol();
-	}
+    // Constructor takes a Position object and sets the initial position of the Knight
+    public Knight(Position p){
+        this.row = p.getRow();
+        this.col = p.getCol();
+    }
 
+    // Helper function to check if the given position is valid on the chessboard.
     private boolean isValidMove(int row, int col) {
-        // Check that the position is within the bounds of the chessboard
+    // Check that the position is within the bounds of the chessboard
         return row >= 1 && row <= 8 && col >= 1 && col <= 9;
     }
 
+    // Helper function to add a new element to an array of Positions.
     private void addElement(Position[] arr, Position p){
-    	for(int i = 0; i < arr.length; i ++){
-    		if (arr[i] == null){
-    			arr[i] = p;
-    			break;
-    		}
-    	}
+        for(int i = 0; i < arr.length; i ++){
+            if (arr[i] == null){
+                arr[i] = p;
+                break;
+            }
+        }
     }
 
-	public Position[] moves(Position p){
-		Position[] tmp = new Position[8];
+    // Returns an array of all the possible moves that the Knight can make from the given position.
+    public Position[] moves(Position p) {
+    // Initialize an array to hold all the possible moves.
+        Position[] tmp = new Position[8];
 
-     	int[][] possibleMoves = {{-2, -1}, {-2, 1}, {-1, -2}, {-1, 2}, {1, -2}, {1, 2}, {2, -1}, {2, 1}};
+    // Define all the possible moves that a Knight can make.
+        int[][] possibleMoves = {{-2, -1}, {-2, 1}, {-1, -2}, {-1, 2}, {1, -2}, {1, 2}, {2, -1}, {2, 1}};
+
+    // Check each possible move and add it to the array if it is valid.
         for (int[] possiblePosition : possibleMoves) {
             int newRow = p.getRow() + possiblePosition[0];
             int newCol = p.getCol() + possiblePosition[1];
@@ -30,28 +38,29 @@ public class Knight implements ChessPiece{
                 addElement(tmp, new Position(newRow, newCol));
             }
         }
-        
-        int i = 0;
-        while (i < tmp.length){
-        	if(tmp[i] == null){
-        		break;
-        	}
-        	i++;
-        }
 
+    // Copy the non-null elements of the temporary array to a new array that will be returned.
+        int i = 0;
+        while (i < tmp.length) {
+            if (tmp[i] == null) {
+                break;
+            }
+            i++;
+        }
         Position[] moves = new Position[i];
-        for(int j = 0; j<moves.length; j++){
-        	moves[j] = tmp[j];
-        } 
+        for (int j = 0; j < i; j++) {
+            moves[j] = tmp[j];
+        }
         return moves;
     }
     
+    // Returns the current position of the Knight.
+    public Position getPosition(){
+        return new Position(this.row, this.col);
+    }
 
-	public Position getPosition(){
-		return new Position(this.row, this.col);
-	}
-
-	public String toString(){
-		return "Knight at " + getPosition().toString();
-	}
+    // Retruns the Knight piece informaiton including its position as a string
+    public String toString(){
+        return "knight at " + getPosition().toString();
+    }
 }
